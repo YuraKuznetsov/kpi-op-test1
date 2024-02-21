@@ -13,11 +13,13 @@ public class Main {
         SvenInterval interval = sven.findInterval();
 
         System.out.println("a: " + interval.ax);
-        System.out.println("m: " + interval.mx);
         System.out.println("b: " + interval.bx);
 
-        System.out.println("f(a): " + interval.ay);
-        System.out.println("f(m): " + interval.my);
-        System.out.println("f(b): " + interval.by);
+        DichotomyMethod dichotomyMethod = new DichotomyMethod();
+        dichotomyMethod.setFunction(x -> Math.pow((100 - x), 2));
+        dichotomyMethod.setE(10);
+
+        double min = dichotomyMethod.find(interval);
+        System.out.println(min);
     }
 }
