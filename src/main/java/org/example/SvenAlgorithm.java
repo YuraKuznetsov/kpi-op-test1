@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.dto.Interval;
+import org.example.dto.SvenInterval;
 
 import java.util.function.Function;
 
@@ -10,7 +10,7 @@ public class SvenAlgorithm {
     private double delta;
     private double x0;
 
-    public Interval findInterval() {
+    public SvenInterval findInterval() {
         int k = 0;
 
         double[] xCords = new double[] {x0 - delta, x0, x0 + delta};
@@ -21,7 +21,7 @@ public class SvenAlgorithm {
         yCords[2] = f.apply(xCords[2]);
 
         if (yCords[1] < yCords[0] && yCords[1] < yCords[2]) {
-            return new Interval(xCords[0], xCords[2]);
+            return new SvenInterval(xCords, yCords);
         }
 
         while (yCords[1] > yCords[0] || yCords[1] > yCords[2]) {
@@ -52,23 +52,51 @@ public class SvenAlgorithm {
         double xDistance01 = xCords[1] - xCords[0];
         double xDistance12 = xCords[2] - xCords[1];
 
+        SvenInterval interval = new SvenInterval();
+
         if (xDistance01 > xDistance12) {
             double xNew = xCords[0] + xDistance01 / 2;
             double yNew = f.apply(xNew);
 
-            if (yNew < yCords[1])
-                return new Interval(xCords[0], xCords[1]);
-            else
-                return new Interval(xNew, xCords[2]);
+            if (yNew < yCords[1]) {
+                interval.ax = xCords[0];
+                interval.mx = xNew;
+                interval.bx = xCords[1];
+                interval.ay = yCords[0];
+                interval.my = yNew;
+                interval.by = yCords[1];
+            }
+            else {
+                interval.ax = xNew;
+                interval.mx = xCords[1];
+                interval.bx = xCords[2];
+                interval.ay = yNew;
+                interval.my = yCords[1];
+                interval.by = yCords[2];
+            }
         } else {
             double xNew = xCords[1] + xDistance12 / 2;
             double yNew = f.apply(xNew);
 
-            if (yNew < yCords[1])
-                return new Interval(xCords[1], xCords[2]);
-            else
-                return new Interval(xCords[0], xNew);
+            if (yNew < yCords[1]) {
+                interval.ax = xCords[1];
+                interval.mx = xNew;
+                interval.bx = xCords[2];
+                interval.ay = yCords[1];
+                interval.my = yNew;
+                interval.by = yCords[2];
+            }
+            else {
+                interval.ax = xCords[0];
+                interval.mx = xCords[1];
+                interval.bx = xNew;
+                interval.ay = yCords[0];
+                interval.my = yCords[1];
+                interval.by = yNew;
+            }
         }
+
+        return interval;
     }
 
     private void checkYCords(double[] yCords) {

@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.dto.Interval;
+import org.example.dto.SvenInterval;
 
 public class Main {
 
@@ -10,9 +10,14 @@ public class Main {
         sven.setDelta(5);
         sven.setX0(30);
 
-        Interval interval = sven.findInterval();
+        SvenInterval interval = sven.findInterval();
 
-        System.out.println("a: " + interval.a);
-        System.out.println("b: " + interval.b);
+        System.out.println("a: " + interval.ax);
+        System.out.println("m: " + interval.mx);
+        System.out.println("b: " + interval.bx);
+
+        System.out.println("f(a): " + interval.ay);
+        System.out.println("f(m): " + interval.my);
+        System.out.println("f(b): " + interval.by);
     }
 }
