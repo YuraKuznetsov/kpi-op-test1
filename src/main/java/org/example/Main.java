@@ -15,11 +15,17 @@ public class Main {
         System.out.println("a: " + interval.ax);
         System.out.println("b: " + interval.bx);
 
-        DichotomyMethod dichotomyMethod = new DichotomyMethod();
-        dichotomyMethod.setFunction(x -> Math.pow((100 - x), 2));
-        dichotomyMethod.setE(10);
+//        DichotomyMethod dichotomyMethod = new DichotomyMethod();
+//        dichotomyMethod.setFunction(x -> Math.pow((100 - x), 2));
+//        dichotomyMethod.setE(10);
+//
+//        double min = dichotomyMethod.find(interval);
+//        System.out.println(min);
 
-        double min = dichotomyMethod.find(interval);
-        System.out.println(min);
+        GoldenSection goldenSection = new GoldenSection();
+        goldenSection.setFunction(x -> Math.pow((100 - x), 2));
+        goldenSection.setE(20);
+
+        System.out.println(goldenSection.find(interval));
     }
 }
