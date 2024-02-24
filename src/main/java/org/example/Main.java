@@ -44,10 +44,16 @@ public class Main {
 //
 //        System.out.println(newtonRaphson.find());
 
-        SecantMethod secantMethod = new SecantMethod();
-        secantMethod.setFunction1(x -> 1 - 1 / (x * x));
-        secantMethod.setE(0.01);
+//        SecantMethod secantMethod = new SecantMethod();
+//        secantMethod.setFunction1(x -> 1 - 1 / (x * x));
+//        secantMethod.setE(0.01);
+//
+//        System.out.println(secantMethod.find(0.5, 1.1));
 
-        System.out.println(secantMethod.find(0.5, 1.1));
+        MiddlePoint middlePoint = new MiddlePoint();
+        middlePoint.setFunction1(x -> 1 - 1 / (x * x));
+        middlePoint.setE(0.01);
+
+        System.out.println(middlePoint.find(0.5, 1.1));
     }
 }
