@@ -36,12 +36,18 @@ public class Main {
 //
 //        System.out.println(paulMethod.find());
 
-        NewtonRaphson newtonRaphson = new NewtonRaphson();
-        newtonRaphson.setFunction1(x -> 1 - 1 / (x * x));
-        newtonRaphson.setFunction2(x -> 2 / (x * x * x));
-        newtonRaphson.setX0(0.5);
-        newtonRaphson.setE(0.0001);
+//        NewtonRaphson newtonRaphson = new NewtonRaphson();
+//        newtonRaphson.setFunction1(x -> 1 - 1 / (x * x));
+//        newtonRaphson.setFunction2(x -> 2 / (x * x * x));
+//        newtonRaphson.setX0(0.5);
+//        newtonRaphson.setE(0.0001);
+//
+//        System.out.println(newtonRaphson.find());
 
-        System.out.println(newtonRaphson.find());
+        SecantMethod secantMethod = new SecantMethod();
+        secantMethod.setFunction1(x -> 1 - 1 / (x * x));
+        secantMethod.setE(0.01);
+
+        System.out.println(secantMethod.find(0.5, 1.1));
     }
 }
