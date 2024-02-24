@@ -28,12 +28,20 @@ public class Main {
 //
 //        System.out.println(goldenSection.find(interval));
 
-        PaulMethod paulMethod = new PaulMethod();
-        paulMethod.setFunction(x -> x * (2 * x - 3));
-        paulMethod.setDelta(0.1);
-        paulMethod.setX0(3.5);
-        paulMethod.setE(0.01);
+//        PaulMethod paulMethod = new PaulMethod();
+//        paulMethod.setFunction(x -> x * (2 * x - 3));
+//        paulMethod.setDelta(0.1);
+//        paulMethod.setX0(3.5);
+//        paulMethod.setE(0.01);
+//
+//        System.out.println(paulMethod.find());
 
-        System.out.println(paulMethod.find());
+        NewtonRaphson newtonRaphson = new NewtonRaphson();
+        newtonRaphson.setFunction1(x -> 1 - 1 / (x * x));
+        newtonRaphson.setFunction2(x -> 2 / (x * x * x));
+        newtonRaphson.setX0(0.5);
+        newtonRaphson.setE(0.0001);
+
+        System.out.println(newtonRaphson.find());
     }
 }
