@@ -21,6 +21,10 @@ public class PaulMethod {
 
         while (true) {
             if (Math.abs(interval.my - yNew) <= e && Math.abs(interval.mx - xNew) <= e) {
+                System.out.println("a: " + interval.ax);
+                System.out.println("m: " + interval.mx);
+                System.out.println("b: " + interval.bx);
+                System.out.println("xNew: " + xNew);
                 return xNew;
             }
 

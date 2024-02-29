@@ -24,8 +24,12 @@ public class MiddlePoint {
             interval.mx = (interval.bx + interval.ax) / 2;
             interval.my = f_1.apply(interval.mx);
 
-            System.out.println("\na: " + interval.ax);
-            System.out.println("b: " + interval.bx);
+            System.out.println("\nx1: " + interval.ax);
+            System.out.println("x2: " + interval.bx);
+            System.out.println("f1: " + interval.ay);
+            System.out.println("f2: " + interval.by);
+            System.out.println("x_ср: " + interval.mx);
+            System.out.println("f(x_ср): " + interval.my);
 
             if (Math.abs(interval.my) < e) return interval.mx;
 

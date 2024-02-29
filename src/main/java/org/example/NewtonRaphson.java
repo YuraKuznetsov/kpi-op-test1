@@ -12,8 +12,16 @@ public class NewtonRaphson {
     public double find() {
         double x_i = x0;
 
-        while (Math.abs(f_1.apply(x_i)) > e) {
-            x_i = x_i - (f_1.apply(x_i) / f_2.apply(x_i));
+        while (true) {
+            double f1 = f_1.apply(x_i);
+            double f2 = f_2.apply(x_i);
+
+            System.out.println("xi: " + x_i);
+            System.out.println("f1: " + f1);
+            System.out.println("f2: " + f2);
+
+            x_i = x_i - (f1 / f2);
+            if (Math.abs(f1) <= e) break;
         }
 
 //        int iterationsCount = 3;
